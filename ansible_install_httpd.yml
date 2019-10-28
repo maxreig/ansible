@@ -1,0 +1,20 @@
+- name: Install & Config WEBSERVER by Max Reig
+  hosts: localhost
+  tasks:
+  - name: Instalacion apache
+    yum:
+      name: httpd
+      state: present
+  - name: Verificamos servicio
+    service:
+      name: httpd 
+      state: started
+  - name: Abrimos el puerto 80 (default)
+    firewalld:
+      service: http
+      permanent: true
+      state: enabled
+  - name: Reinicio servicio "firewalld" para aplicar la excepcion del puerto 80
+    service: 
+      name: firewalld 
+      state: restarted
