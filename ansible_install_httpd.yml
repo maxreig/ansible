@@ -1,4 +1,4 @@
-- name: Install & Config WEBSERVER by Max Reig
+- name: Install & Config WEBSERVER by Max Reig 2019
   hosts: localhost
   tasks:
   - name: Instalacion apache
@@ -18,3 +18,8 @@
     service: 
       name: firewalld 
       state: restarted
+  - name: Check start httpd process
+    service: 
+      name: httpd
+      state: started
+      enabled: yes
